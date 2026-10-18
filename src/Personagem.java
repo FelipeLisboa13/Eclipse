@@ -1,50 +1,24 @@
-public class Personagem {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String nome;
+public abstract class Personagem extends Criatura {
+
+
     private String genero;
-    private String vida;
-    private String defeza;
-    private String forca;
+    private Arma arma;
+    private int mana = 25;
 
-
-    public Personagem(String nome, String genero, String vida, String defeza, String forca) {
-        this.nome = nome;
+    public Personagem(String nome, int vida, int defesa, int forca) {
+        super(nome, vida, defesa, forca);
         this.genero = genero;
-        this.vida = vida;
-        this.defeza = defeza;
-        this.forca = forca;
     }
 
-    public String getVida() {
-        return vida;
+    public Arma getArma() {
+        return arma;
     }
 
-    public void setVida(String vida) {
-        this.vida = vida;
-    }
-
-    public String getDefeza() {
-        return defeza;
-    }
-
-    public void setDefeza(String defeza) {
-        this.defeza = defeza;
-    }
-
-    public String getForca() {
-        return forca;
-    }
-
-    public void setForca(String forca) {
-        this.forca = forca;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setArma(Arma arma) {
+        this.arma = arma;
     }
 
     public String getGenero() {
@@ -54,4 +28,38 @@ public class Personagem {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    private List<Arma> armasDisponiveis = new ArrayList<>();
+    public  List<Arma> getArmasDisponiveis(){
+        return armasDisponiveis;
+    }
+    protected  void adicionarArma(Arma arma){
+        armasDisponiveis.add(arma);
+    }
+
+    private List<Habilidade> habilidades = new ArrayList<>();
+
+    public int getMana(){
+        return mana;
+    }
+
+    public void ganharMana(int quantidade){
+        mana += quantidade;
+    }
+    public boolean gastarMana(int custo) {
+        if (mana >= custo) {
+            mana -= custo;
+            return true;
+        }
+        return false;
+    }
+
+    public List<Habilidade> getHabilidades(){
+        return habilidades;
+    }
+
+    protected void adicionarHabilidades(Habilidade habilidade){
+        habilidades.add(habilidade);
+    }
+
 }
