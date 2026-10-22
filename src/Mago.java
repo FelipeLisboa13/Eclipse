@@ -1,8 +1,8 @@
 public class Mago extends Personagem {
 
-    private Arma cajado = new Arma("Cajado", 12);
-    private Arma varinha = new Arma("Varinha", 12);
-    private Arma cetro = new Arma("Cetro", 12);
+    private Arma cajado = new Arma("Cajado", 13);
+    private Arma varinha = new Arma("Varinha", 13);
+    private Arma cetro = new Arma("Cetro", 13);
 
     public Mago(String nome, String genero, int vida, int defesa, int forca) {
         super(nome, vida, defesa, forca);

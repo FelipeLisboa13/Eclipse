@@ -1,8 +1,8 @@
 public class Assassino extends Personagem {
 
-    private Arma kunai = new Arma("Kunai", 12);
-    private Arma adagas = new Arma("Adagas", 12);
-    private Arma laminasGemeas = new Arma("Laminas Gemeas", 12);
+    private Arma kunai = new Arma("Kunai", 13);
+    private Arma adagas = new Arma("Adagas", 13);
+    private Arma laminasGemeas = new Arma("Laminas Gemeas", 13);
 
     public Assassino(String nome, String genero, int vida, int defesa, int forca) {
         super(nome, vida, defesa, forca);

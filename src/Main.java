@@ -20,7 +20,6 @@ public class Main {
             String nome = readln("  Nome do personagem: ");
             IO.println("___________________________________________________________");
             IO.println("");
-
             Genero generoEscolhido = null;
             while (generoEscolhido == null) {
                 IO.println("  Qual é o Gênero do seu personagem: ");
@@ -36,9 +35,7 @@ public class Main {
                     IO.println(" Opção inválida! Tente de novo. ");
                 }
             }
-
             IO.println("");
-
             Classe classesEscolhido = null;
             while (classesEscolhido == null) {
                 IO.println(" Escolha o que você vai ser: ");
@@ -53,9 +50,7 @@ public class Main {
                     IO.println(" Opção inválida! Tente novamente. ");
                 }
             }
-
             IO.println("");
-
             Raca racaEscolhido = null;
             while (racaEscolhido == null) {
                 IO.println(" Escolha sua Raça: ");
@@ -69,20 +64,17 @@ public class Main {
                 } else {
                     IO.println(" Opção inválida! Tente de novo.");
                 }
-
                 switch (classesEscolhido) {
                     case Guerreiro -> personagem = new Guerreiro(nome, generoEscolhido.toString(),
-                            100, 9, 28);
+                            100, 8, 28);
                     case Mago -> personagem = new Mago(nome, generoEscolhido.toString(),
-                            80, 5, 22);
+                            90, 5, 22);
                     case Arqueiro -> personagem = new Arqueiro(nome, generoEscolhido.toString(),
                             90, 7, 20);
                     case Assassino -> personagem = new Assassino(nome, generoEscolhido.toString(),
-                            85, 8, 26);
+                            95, 8, 26);
                 }
-
                 IO.println("");
-
                 Arma armaEscolher = null;
                 while (armaEscolher == null) {
                     IO.println(" Escolha seu equipamento inicial: ");
@@ -98,8 +90,6 @@ public class Main {
                     }
                 }
                 personagem.setArma(armaEscolher);
-
-
                 IO.println("_______________________________________");
                 IO.println(" -- Personagem criado com sucesso!! -- ");
                 IO.println("---------------------------------------");
@@ -114,10 +104,12 @@ public class Main {
                 IO.println("-- Arma: " + personagem.getArma().getNome() + " ----");
                 IO.println("");
                 IO.println("------------------------- Apareceu no mundo -------------------------");
+                IO.println("");
+                IO.println("              ___________ INIMIGO A FRENTE ___________ ");
                 Inimigo[] inimigos = {
-                        new Inimigo("Goblin", 50, 3, 25),
-                        new Inimigo("Orc", 80, 6, 35),
-                        new Inimigo("Dragão Sombrio (mini Boss)", 125, 7, 40)
+                        new Inimigo("Goblin", 50, 3, 23),
+                        new Inimigo("Orc", 80, 6, 33),
+                        new Inimigo("Dragão Sombrio (Mini Boss)", 125, 7, 38)
                 };
                 int pontos = 0;
                 boolean venceu = true;
@@ -127,18 +119,57 @@ public class Main {
                         venceu = false;
                         break;
                     }
-                    pontos += 100;
-                    IO.println("");
-                    IO.println("Inimigo derrotado! Pontos: " + pontos);
-                    personagem.curar(30);
+                        pontos += 2;
+                        IO.println("");
+                        IO.println("Inimigo derrotado! Pontos: " + pontos);
+                        personagem.curar(30);
+                }
+                    if (venceu) {
+                        pontos = Melhoria.melhorar(personagem, pontos);
+                        IO.println("------------ Segundo Nível ------------");
+                        Inimigo[] inimigos2 = {
+                                new Inimigo("Elfo Negro", 70, 4, 27),
+                                new Inimigo("Morcegos Corrompido", 95, 7, 38),
+                                new Inimigo("Nocthar (Mini Boss)", 135, 8, 40)
+                        };
+                        for (Inimigo inimigo : inimigos2) {
+                            if (!Batalha.lutar(personagem, inimigo)) {
+                                venceu = false;
+                                break;
+                            }
+                            pontos += 3;
+                            IO.println("");
+                            IO.println("Inimigo derrotado! Pontos: " + pontos);
+                            personagem.curar(30);
+                        }
+                    }
+                if (venceu) {
+                    pontos = Melhoria.melhorar(personagem, pontos);
+                    IO.println(" ------------ Terceiro Nível  ------------ ");
+                    Inimigo[] inimigos3 = {
+                            new Inimigo("Rastejante", 72, 5, 30),
+                            new Inimigo("Espectro Menor", 85, 7, 40),
+                            new Inimigo("Azrael (Boss  Final)", 150, 9, 45)
+                    };
+                    for (Inimigo inimigo : inimigos3) {
+                        if (!Batalha.lutar(personagem, inimigo)) {
+                            venceu = false;
+                            break;
+                        }
+                        pontos += 3;
+                        IO.println("");
+                        IO.println("Inimigos derrotado! Pontos: " + pontos);
+                        personagem.curar(30);
+                    }
                 }
                 IO.println("");
                 if (venceu) {
                     IO.println("VITÓRIA! Você derrotou todos os inimigos do Eclipse!");
+                    IO.println("");
+                    IO.println(" ---------- Muito Bem Você Conseguiu Limpar o mundo do Eclipse ---------- ");
                 } else {
                     IO.println("DERROTA... " + personagem.getNome() + " caiu em batalha.");
                 }
-                IO.println("Pontuação final: " + pontos);
             }
             IO.println("-- Jogar Novamente --");
             jogarNovamente = readln("(s/n): ");
@@ -147,5 +178,4 @@ public class Main {
         IO.println("");
         IO.println(" --- Obrigado por jogar Eclipse! --- ");
     }
-
     }

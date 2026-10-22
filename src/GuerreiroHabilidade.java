@@ -6,7 +6,7 @@ public class GuerreiroHabilidade implements Habilidade{
 
     @Override
     public int getcusto() {
-        return 25;
+        return 33;
     }
 
     @Override

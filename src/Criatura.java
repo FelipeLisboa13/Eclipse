@@ -12,6 +12,18 @@ public abstract class Criatura {
         this.forca = forca;
     }
 
+    public void aumentarForca(int quantidade) {
+        forca += quantidade;
+    }
+
+    public void aumentarDefesa(int quantidade) {
+        defesa += quantidade;
+    }
+
+    public void aumentarVida(int quantidade) {
+        vida += quantidade;
+    }
+
     public String getNome() {
         return nome;
     }
