@@ -1,18 +1,18 @@
-public class GolpePoderoso implements Habilidade{
+public class ArqueiroHabilidade implements Habilidade{
     @Override
     public String getNome() {
-        return "Deceiver’s Punch";
+        return "Illusion";
     }
 
     @Override
     public int getcusto() {
-        return 25;
+        return 29;
     }
 
     @Override
     public void usar(Personagem usuario, Criatura alvo) {
-        int dano = (usuario.getForca() + usuario.getArma().getDano()) * 2;
-        IO.println(usuario.getNome() + " usa golpe Poderoso em " + alvo.getNome() + "!");
+        int dano = (usuario.getForca() + usuario.getArma().getDano() *2 );
+        IO.println(usuario.getNome() + " Usar ataque de flecha " + alvo.getNome() + "!");
         alvo.receberDano(dano);
 
     }

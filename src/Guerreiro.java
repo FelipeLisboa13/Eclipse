@@ -1,8 +1,8 @@
 public class Guerreiro extends Personagem {
 
- private Arma katana = new Arma("Katana", 15);
- private Arma lanca = new Arma("Lança", 15);
- private Arma espadaPesada = new Arma("Espada Pesada",15);
+ private Arma katana = new Arma("Katana", 12);
+ private Arma lanca = new Arma("Lança", 12);
+ private Arma espadaPesada = new Arma("Espada Pesada",12);
 
     public Guerreiro(String nome, String genero, int vida, int defesa, int forca) {
         super(nome, vida, defesa, forca);
@@ -10,7 +10,7 @@ public class Guerreiro extends Personagem {
         adicionarArma(lanca);
         adicionarArma(espadaPesada);
         setArma(espadaPesada);
-        adicionarHabilidades(new GolpePoderoso());
+        adicionarHabilidades(new GuerreiroHabilidade());
     }
 
     public Arma getKatana() {

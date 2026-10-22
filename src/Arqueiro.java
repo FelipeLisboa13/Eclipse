@@ -1,8 +1,8 @@
 public class Arqueiro extends Personagem{
 
- private Arma arcoFlexivel = new Arma("Arco Flexíel", 15);
- private Arma besta = new Arma("Besta", 15);
- private Arma arcoPesado = new Arma("Arco Pesado", 15 );
+ private Arma arcoFlexivel = new Arma("Arco Flexíel", 12);
+ private Arma besta = new Arma("Besta", 12);
+ private Arma arcoPesado = new Arma("Arco Pesado", 12 );
 
     public Arqueiro(String nome, String genero, int vida, int defesa, int forca) {
         super(nome, vida, defesa, forca);
@@ -10,6 +10,7 @@ public class Arqueiro extends Personagem{
         adicionarArma(besta);
         adicionarArma(arcoPesado);
        setArma(arcoFlexivel);
+       adicionarHabilidades(new ArqueiroHabilidade());
     }
 
 

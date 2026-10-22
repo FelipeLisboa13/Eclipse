@@ -13,7 +13,8 @@ public class Batalha {
          IO.println(heroi.getNome() + ": " + heroi.getVida() + " | " + inimigo.getNome() + ": " + inimigo.getVida());
          IO.println("1 - Atacar");
          IO.println("2 - Defender");
-         IO.println("3 - Habilidade (Mana: " + heroi.getMana() + ")");
+         IO.println("3 - Habilidade" );
+         IO.println("sua Mana: " + heroi.getMana());
          String op = readln("Opção ");
 
          heroi.setDefendendo(false);
@@ -23,6 +24,7 @@ public class Batalha {
              heroi.ganharMana(10);
          } else if (op.equals("2")) {
              heroi.setDefendendo(true);
+             heroi.ganharMana(5);
              IO.println(heroi.getNome() + " se prepara para o golpe!");
          } else if (op.equals("3")) {
              if (!usarHabilidade(heroi, inimigo)){
@@ -40,7 +42,6 @@ public class Batalha {
  }
  private static boolean usarHabilidade(Personagem heroi, Inimigo inimigo) {
      List<Habilidade> habilidades = heroi.getHabilidades();
-     IO.println("DEBUG: habilidades = " + habilidades.size());
      IO.println("Mana: " + heroi.getMana());
      for (int i = 0; i < habilidades.size(); i++){
          Habilidade h = habilidades.get(i);
